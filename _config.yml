@@ -1,0 +1,10 @@
+#Name of the site
+name: ORNL Enterprise Architecture Reference
+
+#Short description
+description: The reference site for ITSD Enterprise Architecture Documentation
+
+markdown: kramdown
+
+plugins:
+  - jekyll-sitemap
