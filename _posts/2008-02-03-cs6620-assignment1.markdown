@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "CS 6620 Ray Tracing: Assignment 1"
+date:   2008-02-03 23:02
+category: classes
+tags: cs6620
+---
+
+Assignment 1
+
+CS 6620 Ray Tracing
+
+Required picture is [here]({{"/assets/prog01.ppm" | prepend: site.baseurl}}). A PNG is shown below.
+
+![Required Image 1]({{"/assets/prog01.png" | prepend: site.baseurl}})
+
+Compiled using gcc 4.0 (OS X 10.4) on a MacBook 2.16Ghz C2D with 2GB RAM.  Running time between 0.36 - 0.45 seconds.
+
+Creative Image is [here]({{"/assets/creative1.ppm" | prepend: site.baseurl}}).  The image below is a PNG.
+
+![Creative Image]({{"/assets/creative1.png" | prepend: site.baseurl}}) 
+
+Compiled using gcc 4.0 (OS X 10.4) on a MacBook 2.16Ghz C2D with 2GB RAM.  Render time between 0.30 - 0.34 seconds.
+
+The creative image also has my &quot;extra&quot; object in it, a cylinder.  There are four spheres, one cylinder, one disk, one ring and a box.  The box is the pool table, the ring and the disk are on the table (actually slightly above the table) as the queue starting point.  The spheres are obviously the queue ball and the 3 pool balls.
+
+<strong>Extra Credit:  </strong>A cylinder with caps.  Its actually not complete because I didn't put in a rotation function, so the cylinder will always run parallel to the Y axis.  I didn't need more functionality than moving the queue around for my creative image.  As a proof of concept that you can actually move the queue stick around, I've included another image [[download:creative2.png:text:here.:]]
+
+Code is available <!--[[download:assignment1.zip:text:here:]].-->
+
+Time Spent: &nbsp;Ten hours? &nbsp;An hour here, an hour there, pretty soon it adds up.
+
+Difficulty: &nbsp;I didn't yank my hair out, so I'll say &quot;not hard.&quot;
+

@@ -1,0 +1,41 @@
+---
+layout: post
+title:  "CS 6620 Ray Tracing: Assignment 7"
+date:   2008-05-01 09:26
+category: classes
+tags: cs6620
+---
+
+
+####Design Decisions####  
+Depth of Field <br />
+Area Light<br />
+Java distributed ray tracer 
+
+####Depth of Field####  
+![]({{"/assets/prog07-creative-1.png" | prepend: site.baseurl}})
+
+![]({{"/assets/prog07-creative-2.png" | prepend: site.baseurl}})
+
+I spent too much time playing around with the radius of the lense:  more time than was worth.  I also tried to implement it like a real camera (f_stop and all that) but came to realize that all the numbers I read online about cameras were in milimeters and in the end not worth the time.  So, a lot of the artifacting you see is from picking a less than optimal radius.  I ended up not using this in my final image rendering because the amount of samples to make it look decent plus the amount of samples to make soft shadows look good plus the sampling required for anti-aliasing just about killed me.
+
+####Area Light (3x3 uniform sampling, 64 samples per light, 84.5 sec)   ####
+![]({{"/assets/prog07-creative-4.png" | prepend: site.baseurl}})
+
+####Java Distributed Ray Tracer####
+Much like the depth of field, I found this to be more of a hinderance than anything else.  On the final image I created, I didn't use the distributed ray tracer because, although it could parallelize across multiple machines I found it was easier (and maybe quicker) if I simply ran it on on a single machine.  The overhead of starting up the ray tracing was ~30 seconds (to build the grids and read the obj files from disk).  But rendering each row took less than 5 seconds.  The overhead cost was too much.  So, I stopped using it. 
+
+####Final Image####
+
+
+![]({{"/assets/prog06-creative-3.png" | prepend: site.baseurl}})
+
+[large image]({{"/assets/prog06-creative.png" | prepend: site.baseurl}}) (8.79e 03 seconds lab8-19)
+
+Well, unfortunately I didn't sample enough for the shadows, so the Asp fighter shadows are pretty...poor.  Making the image that large really does show where you've missed the mark on things.  
+
+####Miscellaneous####
+
+I wish the Mac Lab connected to Engman (lab 8) had gcc 4.2 or icc installed.  I couldn't run my code with OpenMP, which made it painfully slow.
+
+

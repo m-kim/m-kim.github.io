@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "ADER-WENO finite volume 2"
+date:   2015-01-10
+category: research 
+tags: ader weno finite volume
+---
+
+Searching stackexchange for weno finite volume resulted in 
+
+http://scicomp.stackexchange.com/questions/8706/is-there-a-good-tutorial-or-textbook-like-source-on-implementing-eno-weno-with-l
+
+which refers back to PyWENO, but also
+
+http://scicomp.stackexchange.com/questions/6710/first-order-finite-volume-spatial-discretization-of-the-heat-equation-on-an-unst/6712#6712
+
+an explanation of unstructured heat but also notes from Purdue ME,
+
+https://engineering.purdue.edu/ME608/webpage/main.pdf
+

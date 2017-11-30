@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "CS 6620 Ray Tracing: Assignment 3"
+date:   2008-02-29 17:39
+category: classes
+tags: cs6620 
+---
+
+
+All images were generated on a MacBook 2.16Ghz C2D with 2GB of RAM Leopard with XCode.&nbsp; Strangely enough, I believe the times are for debugging and not for release.&nbsp; Although I switched it to release mode, it was still debugging.&nbsp; *shrug*&nbsp;
+
+[*Required Image* (0.788 sec)]({{"/assets/prog03.ppm" | prepend: site.baseurl}})
+
+![Required Image]({{"/assets/prog03.png" | prepend: site.baseurl}})
+
+[*Creative Image 1* (2.82 sec)]({{"/assets/creative.ppm" | prepend: site.baseurl}})
+
+![Creative Image]({{"/assets/creative3.png" | prepend: site.baseurl}})
+
+[*Creative Image 2*]({{"/assets/creative3-2.ppm" | prepend: site.baseurl}})
+
+![Creative Image 2]({{"/assets/creative3-2.png" | prepend: site.baseurl}})
+
+For my creative image I first created a saddle using the height field generator.
+
+f = (x^2 - y^2) *a
+
+where a is some value greater than 0.&nbsp; In this particular case I think I chose 3.
+
+I think positioned two saddles between a metal material ball and a glass material ball (note though its not beer's) and generated the image. 
+
+The code can be found <!--[[download:Assignment3.zip:text:here.:]]&nbsp;-->
+
+*Resources*
+
+Class notes because neither PBRT nor Ray Tracing from the Ground Up had information about height fields.
+
+*Time*
+
+Hard to say mostly because I made two very careless errors that cost me almost a day.&nbsp; I also had a hard time figuring out what the notes really said, but that's because I can't seem to read properly anymore.

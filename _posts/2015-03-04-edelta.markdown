@@ -1,0 +1,107 @@
+---
+layout: post
+title:  "closest point embedding problems 5"
+date:   2015-03-04 17:00
+category: research 
+---
+
+Edit: found these in "Surface Techniques for Vortex Visualization", Garth et al. 2004.
+![]({{site.baseurl}}/assets/20150304/edelta-1.jpg )
+![]({{site.baseurl}}/assets/20150304/edelta-2.jpg )
+
+That bulb may be too complex.
+
+
+Camera position for MeshLab
+
+~~~xml
+<!DOCTYPE ViewState>
+<project>
+ <VCGCamera TranslationVector="-0.865113 -0.188515 -4.36142 1" LensDistortion="0 0" ViewportPx="2495 1498" PixelSizeMm="0.0369161 0.0369161" CenterPx="1247 749" FocalMm="633.292" RotationMatrix="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 "/>
+ <ViewSettings NearPlane="998" TrackScale="9.6232" FarPlane="1029.86"/>
+ <Render Lighting="1" DoubleSideLighting="1" SelectedVert="1" ColorMode="0" SelectedFace="1" BackFaceCull="0" FancyLighting="0" DrawMode="5" TextureMode="0"/>
+</project>
+~~~
+Original mesh:
+![]({{site.baseurl}}/assets/20150304/snapshot00.png )
+
+Remove first 5000 points/faces, and highlight the next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-1500001.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-1500002.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-1500003.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-2000004.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-2000005.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-3000006.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-3000007.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-4000008.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-4000009.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-5000010.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-5000011.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-6000012.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-6000013.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-7000014.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-7000015.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-7000016.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-8000017.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-9000018.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-9000019.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-10000020.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-10000021.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-11000022.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-11000023.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-12000024.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-12000025.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-13000026.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-13000027.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-14000028.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-14000029.png )
+
+Highlight next 10,000 to be removed.
+![]({{site.baseurl}}/assets/20150304/snapshot-15000030.png )
+
+![]({{site.baseurl}}/assets/20150304/snapshot-15000031.png )
+
+
+

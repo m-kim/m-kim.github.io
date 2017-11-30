@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "About Me"
+date:   2007-07-01
+category: aboutme
+---
+I am a postdoctoral researcher in the [Scientific Data Group](https://www.ornl.gov/division/csmd/scientific-data), in the [Computer Science and Mathematics Disivion](https://www.ornl.gov/division/csmd/) of [Oak Ridge National Laboratory](https://www.ornl.gov). Previously, I was a postdoctoral researcher in the [Scientific Computing and Imaging (SCI) Institute](http://www.sci.utah.edu) at the [University of Utah](http://www.utah.edu). I earned my PhD from the University of Utah, and my advisor is [Chuck Hansen](http://www.cs.utah.edu/~hansen).
+
+I have spent a summer at [Lawrence Livermore National Lab (LLNL)](www.llnl.gov) working with [Peter Lindstrom](http://people.llnl.gov/pl) on a GPGPU implementation of ZFP, a lossy compression algorithm for volumetric data. Further, I have spent two summers working at [Los Alamos National Laboratory](http://www.lanl.gov).  My mentor was Pat McCormick.  You can find a pdf slides with a recap of the [summer 2008](/assets/summer.pdf) and [summer 2009](/assets/som2.pdf) internships.

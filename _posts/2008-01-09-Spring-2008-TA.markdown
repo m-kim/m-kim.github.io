@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Spring 2008 TA"
+date:   2008-01-09 23:45
+category: TAship
+---
+[cs5600](http://www.cs.utah.edu/classes/cs5600) - Chuck Hansen - Intro to Graphics

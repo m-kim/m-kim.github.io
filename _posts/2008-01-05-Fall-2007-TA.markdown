@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Fall 2007 TA"
+date:   2008-01-05 02:17
+category: TAship
+---
+cs6100 - Graduate Algorithms - Suresh Venkat
+
+cs5530 - Database Systems - Juliana Freire

@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Fall 2007 Classes"
+date:   2008-01-05 01:02
+category: classes
+---
+cs6610 - Interactive Graphics - Chuck Hansen
+
+cs6630 - Visualization - Claudio Silva
+
+cs6210 - Scientific Computing - Kris Sikorski

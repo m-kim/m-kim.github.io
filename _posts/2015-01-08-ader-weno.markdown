@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "ADER-WENO finite volume"
+date:   2015-01-08 16:16
+category: research 
+tags: ader weno finite volume
+---
+
+Garch et al. (EuroVis 2012) cites Dumbser et al. (JCP 2007) for its finite volume WENO advection. Having looked into it (briefly) I think it builds a 1D WENO stencil as a pre-process to determine the volume in cell, then flux through the face.
+
+Github has this:
+https://github.com/tbenthompson/rupturotops
+
+for ADER-WENO.
+
+For advection-diffusion in general, I think this is a nice explanation.
+ftp://www.geosci.usyd.edu.au/pub/dietmar/GEOS3104/Pracs/Prac5/AdvectionDiffusionWithMatlab.pdf
+
+Edit:<br/>
+Finally figured out what "ADER" means: Arbitrary DERivative in space and time from
+
+http://physics.nd.edu/assets/139422/2014_web_reu_research_papers.pdf
+
+Edit 2:<br/>
+The author in the previous PDF had a related paper at arvxiv.
+
+http://arxiv.org/pdf/1401.6448v1.pdf
+
+Edit 3:<br/>
+From the github:
+Using pyweno for reconstruction of uniform grids.<br/>
+
+https://github.com/memmett/PyWENO

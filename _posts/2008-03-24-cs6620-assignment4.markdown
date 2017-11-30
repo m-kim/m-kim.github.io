@@ -1,0 +1,64 @@
+---
+layout: post
+title:  "CS 6620 Ray Tracing: Assignment 4"
+date:   2008-03-24 22:49
+category:  classes
+tags: cs6620
+---
+
+
+prog04-nofilter.scn  
+Setup/load time:    0.000764 seconds  
+Render time:        0.257 seconds  
+Post-process time:    0.00621 seconds  
+
+![]({{"/assets/prog04-nofilter.png" | prepend: site.baseurl}})
+
+prog04-jittered-triangle.scn   
+Setup/load time:    0.000763 seconds  
+Render time:        9.03 seconds  
+Post-process time:    0.00609 seconds  
+
+![]({{"/assets/prog04-jittered-triangle.png" | prepend: site.baseurl}})
+
+prog04-jittered-gaussian.scn  
+Setup/load time:    0.000755 seconds  
+Render time:        2.36 seconds  
+Post-process time:    0.00615 seconds  
+
+![]({{"/assets/prog04-jittered-gaussian.png" | prepend: site.baseurl}})
+
+prog03-nofilter.scn  
+Setup/load time:    0.0412 seconds  
+Render time:        2.95 seconds  
+Post-process time:    0.00606 seconds  
+
+![]({{"/assets/prog03-nofilter.png" | prepend: site.baseurl}})
+
+prog03-jittered-triangle.scn  
+Setup/load time:    0.00164 seconds  
+Render time:        106 seconds  
+Post-process time:    0.00643 seconds  
+
+![]({{"/assets/prog03-jittered-triangle.png" | prepend: site.baseurl}})
+
+prog03-jittered-gaussian.scn  
+Render time: 26 seconds
+
+![]({{"/assets/prog03-jittered-gaussian.png" | prepend: site.baseurl}})
+
+####Design Decision####
+
+
+1. 2-pixel triangle filter (and Lanczos Filter) is a complete hack.  I had a nice system setup with  samplers separated from filters, but with the 2-pixel situation, I had to basically had no choice to to put part of the filter code in the sampler portion.</li>
+2. I pre-generate my filters, mostly because of Gaussian filtering.&nbsp; I just found it easier to create the filters immediately.&nbsp; I spent some time thinking about it especially when it came to jittered filtering.&nbsp; For instance, when I pre-generate my Lanczos filter, I use the uniform spacing to pass into my sinc generator.&nbsp; I could probably call it for every jittered sample and then sum up everything and find the average, but I don't see the point.&nbsp; Perhaps it'll be slightly more jittered.&nbsp; I'm unsure.  </li>
+3. The Gaussian filter is generated using binomial coefficients.  Borrowed from Spring 2001 UW graphics class slides.</li>
+4. The Lanczos filter is truncated sinc filter.  I'm not sure how well it works:  the images look &quot;okay.&quot;  One of the problems I had was picking a proper kernel size and under-sampling.  Well, less under-sampling and more just picking the wrong samples.  With kernel size = 3, and a 3x3 filter, I discovered that the vector looked like [0,1,0].  Smooth move on my part.  So, I filter across 2 pixels as well.</li>
+
+####Miscellaneous####
+Time:  15 hours
+
+Difficulty:  Not too bad, I spent more time thinking how I wanted to implement 2-pixel filtering than in the box filter.
+
+####Code####
+<!--[[download:Assignment4.zip:text:Here :]]-->

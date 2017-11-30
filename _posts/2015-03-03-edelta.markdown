@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "closest point embedding problems 4"
+date:   2015-03-03 17:00
+category: research 
+---
+Yesterday, I came to the conclusion that it was the oniony aspect of the dataset 
+that was creating the artifacts. To test this, I removed the triangles from the center
+of the "bulb" and advected on it.  Here's what we get.
+
+<iframe width="640" height="480" src="{{site.baseurl}}/assets/20150303/test.mp4" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="640" height="480" src="{{site.baseurl}}/assets/20150303/test2.mp4" frameborder="0" allowfullscreen></iframe>
+
+
+To see more of the flow, I rotated the flow and snapped this image:
+![]({{site.baseurl}}/assets/20150303/test2-1.png)
+
+It is smeared because there are two parts of the surface close to each other.
+![]({{site.baseurl}}/assets/20150303/test2-2.png )
+
+So it looks like the surface is too close to itself and that's why 
+I'm getting errors.

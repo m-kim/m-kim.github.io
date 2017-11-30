@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "closest point embedding problems 3"
+date:   2015-03-02 16:37
+category: research 
+---
+
+Slowly moving forward.
+setDtStep(0.2)
+grid=768
+subgrid=(3,3,3)
+grid_offset = 3
+normalize=true
+proj_onto_surf=false
+uflic_minute = 1
+uflic_ht = 1
+
+Some stuff sneaks to the other side of the bulb.
+
+Let's try grid=512
+
+Follows the twist, but halts in the same spot.
+
+Move starting spot to orig_pts[0]->size()/5
+Still halts.
+
+Move starting spot to orig_pts[0]->size()/4
+Still halts.
+
+Move starting spot to orig_pts[0]->size()/3.5
+Still halts.
+
+Change setDtStep to 0.1
+Pushes forward, but still stops.
+
+Change dye_advection:computeDye so it uses the cur point (instead of the cell_pt)
+as the starting point as the backwards advection.
+Nothing changes.
+
+Change dye_advection:computeDye so its cell_pt + 0.5
+Whoa, breaking everything.
+
+
+FINALLY! It seems that there are patches missing *right where things go wonky.*
+Even setting grid to 256 with subgrid to 6,6,6 there are patches missing.
+But, setting the subgrid to (1,1,1), no patches. Interesting.
+
+WTF.
+
+![]({{"/assets/20150302/wtf.png" | prepend: site.baseurl}})
+
+Why?
+
+<iframe width="640" height="480" src="{{site.baseurl}}/assets/20150302/wtf.mp4" frameborder="0" allowfullscreen></iframe>
+
+

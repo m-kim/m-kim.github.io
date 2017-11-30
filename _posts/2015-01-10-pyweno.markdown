@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "pyweno docs"
+date:   2015-01-10
+category: research 
+tags: ader weno finite volume
+---
+
+The author or [http://pyweno.readthedocs.org/en/latest/tutorial.html](PyWENO), [http://emmett.ca/matthew/index.htmla](Matthew Emmett) has a nice javascript explanation of Riemann integration.
+
+http://emmett.ca/matthew/index.html
+

@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "CS 6620 Ray Tracing: Assignment 2"
+date:   2008-02-15 21:21
+category: classes
+tags: cs6620
+---
+
+
+CS6620:  Ray Tracing 
+
+Assignment 2
+
+Implemented:  Phong, Dielectrics, Beer's law and Oren Mayar materials.  All times were on a MacBook 2.16Ghz Core 2 Duo with 2GB of RAM, Xcode 2.4.1, in Release mode. 
+
+[Required Image (Phong, Dielectrics)]({{"/assets/prog02.ppm" | prepend: site.baseurl}}) (4.01s)
+
+![Required Image]({{"/assets/prog02.png" | prepend: site.baseurl}})
+
+[Required Image (Beer's Law)]({{"/assets/prog02-beers.png" | prepend: site.baseurl}}) (4.85s)
+
+![Required Image]({{"/assets/prog02-beers.png" | prepend: site.baseurl}})
+
+The previous image had a substance coloring of [0.9, 0.99, 0.9] 
+
+[Required Image (Oren Nayar)]({{"/assets/prog02-orennayar.ppm" | prepend: site.baseurl}}) (4.23 s)
+
+![Required Image]({{"/assets/prog02-orennayar.png" | prepend: site.baseurl}})Oren Nayar
+
+![Required Image]({{"/assets/prog02-orennayar2.png" | prepend: site.baseurl}}) Lambertian
+
+The top image is generated with the ring of spheres generated with Oren Nayar.  The second image is generated with the ring of spheres using Lambertian.  Its difficult to tell, but the O.N. method is slightly darker than the Lambertian method. The O.N. method was generated with sigma = 20 degrees.
+
+[Creative Image (Phong, Dielectric, Beer's Law)]({{"/assets/creative.ppm" | prepend: site.baseurl}}) (.88 s) 
+
+![Creative Image]({{"/assets/creative2.png" | prepend: site.baseurl}})
+
+The creative image has 2 metal reflective boxes directly in front of and behind the camera, creating that infinite hallway look.  Next to the box in front of the camera are three beer's boxes, with red, green and blue as the tint of the box.  Four sphere's are in front of the camera:  the left-most uses phong, the left-inner uses dielectric, the inner-right uses metal, and the right-most sphere uses beer's.  I choose to do this creative image because I didn't think it was apparent in the standard image that I was using dielectric or beer's law.  I think this image makes that more apparent.   
+
+The code can be found <!--[[download:Assignment2.zip:text:here:]]. -->
+
+_Time_:  Again, I wasn't pulling my hair out, so not too much.  A few hours here, a few hours there...I generally prefer doing this than my other school work, so I don't really keep track of time on it. 
+
+_Resources:_  Suffern book, Physically Based Rendering, class notes and Shirley/Hu/LaFortune paper about Coupled materials.
+
+_Just one more thing..._
+
+I tried to get Coupled materials to work, but I didn't really know whether what I did was successful or not.&nbsp; In particular, one of the things I was looking for was a reflection in the surface.&nbsp; With my implementation, I never saw anything like that.&nbsp; I'm still working on it...

@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "CS 6620 Ray Tracing: Assignment 6"
+date:   2008-04-14 23:28
+category: classes
+tags: cs6620
+---
+
+
+####Required Image####
+
+Unaccelerated image  
+2.4 Ghz Pentium 4, 1GB RAM.
+
+![]({{"/assets/prog06-long.png" | prepend: site.baseurl}})
+
+Debug\specter.exe prog06.scn<br />
+Done!<br />
+Setup/load time:        4.77 seconds<br />
+Render time:            4.92e+004 seconds<br />
+Post-process time:      0.102 seconds
+
+Although technically compiled in Debug in Visual Studio 2005, the settings were fully optimized.  *shrug*
+
+Macbook 2.16 Ghz 2GB RAM:  OpenMP, 20 threads.  GCC 4.2.1, Xcode 3.0 Beta
+
+![]({{"/assets/prog06-long.png" | prepend: site.baseurl}})
+
+Setup/load time:    2.53 seconds<br />
+Render time:        27.3 seconds<br />
+Post-process time:    0.00616 seconds<br />
+
+####Creative Image####
+
+MacBook 2.16 Ghz 2GB RAM: OpeMP, 20 threads.  GCC 4.2.1, Xcode 3.0 Beta
+
+<!--[[image:prog06-creative.png::center:0]] -->
+
+Setup/load time:    19.9 seconds<br />
+Render time:        27.9 seconds<br />
+Post-process time:    0.00661 seconds 
+
+####Design Choice####
+
+Implemented a grid (and a half working BVH). 
+
+Multiple grids do not share information.  So, for my creative image (the checkerboard), it uses 1.2 GB of RAM.  The problem was I rely on the location of the bounding box when I build my grid.  This was something I put in without thinking about reusability of the grid.  I think if I were to implement this again, I would use a BVH instead.  Grids take up too much resource. 
+
+####Miscellaneous####
+
+1.  Installed an OBJ reader and spruced up the speed with OpenMP.<br />
+2. The dragon OBJ has ~100000 triangles. I don't know how many the
+buddha has. But there are a good number of dragon OBJs as well as
+buddha OBJs out there getting rendered.  I think its a good test of the renderer. 
+
+Time:  Remove the time it took to put in an OBJ reader and speed up through OpenMP, plus the time it took to try to get the BVH working and I'd say easily less than 10 hours.
+
+Difficulty:  Enjoyable.
+
+Source code <!--[[download:Assignment6.zip:text:here:]]-->
+
+

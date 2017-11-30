@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Fall 2008 Classes"
+date:   2008-08-24 22:27
+category: classes
+---
+Physical Simulation for Animation:&nbsp;[Adam Bargteil](http://www.cs.utah.edu/~adamb)
+
+Computer Vision: [Guido Gerig](http://www.sci.utah.edu/~gerig/)
