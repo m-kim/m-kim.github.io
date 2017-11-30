@@ -1,0 +1,14 @@
+---
+layout: archive
+permalink: /publications/
+title: "Publications"
+author_profile: true
+---
+
+{% include group-by-array collection=site.posts field="categories" %}
+
+{% for post in site.posts %}
+  {% if post.category contains "publication" %}
+  {% include archive-single.html %}
+  {% endif %}
+{% endfor %}

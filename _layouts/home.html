@@ -1,0 +1,16 @@
+---
+layout: single
+---
+
+{% for post in site.posts %}
+  {% if post.category contains "aboutme" %}
+  {{post.content}}
+  {% endif %}
+{% endfor %}
+{% assign counter = 0%}
+{% for post in site.posts %}
+{% if post.category contains "publication" and counter < 5 %}
+{% assign counter = counter |plus: 1 %}
+{% assign image = post.images[0] %}<a href="{{post.url}}">{% include image.html image=image height=100 %}</a>
+{% endif %}
+{% endfor %}
