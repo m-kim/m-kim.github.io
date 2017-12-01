@@ -1,0 +1,635 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.7.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>closest point embedding problems 2 - Mark Kim</title>
+
+
+
+
+<meta name="description" content="Continued from yesterday, it looks like building the on_surf_cmpt is the problem.Checking if there are empty on_surf_cmpt indexes, there aren’t.">
+
+
+
+
+<meta name="author" content="Mark Kim">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Mark Kim">
+<meta property="og:title" content="closest point embedding problems 2">
+
+
+  <link rel="canonical" href="http://localhost:4000/research/closest-point-embedding2/">
+  <meta property="og:url" content="http://localhost:4000/research/closest-point-embedding2/">
+
+
+
+  <meta property="og:description" content="Continued from yesterday, it looks like building the on_surf_cmpt is the problem.Checking if there are empty on_surf_cmpt indexes, there aren’t.">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2015-03-01T16:37:00-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Mark Kim",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Mark Kim Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Mark Kim</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Mark Kim</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Postdoctoral Researcher
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      <!--
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Somewhere</span>
+        </li>
+      -->
+      <li>
+        <a href="/publications" itemprop="sameAs">
+          Publications
+                </a>
+      </li>
+      <li>
+        <a href="/assets/cv.pdf" itemprop="sameAs">
+          CV
+                </a>
+      </li>
+
+      
+      <li>
+        <a href="https://www.ornl.gov/division/csmd/scientific-data" itemprop="sameAs">
+          Scientific Data Group
+                </a>
+      </li>
+    
+  
+      
+      <li>
+        <a href="https://www.ornl.gov/division/CSM" itemprop="sameAs">
+          Computer Science and Mathematics
+        </a>
+      </li>
+    
+
+
+  
+  <li>
+    <a href="https://www.ornl.gov" itemprop="sameAs">
+      Oak Ridge National Laboratory
+            </a>
+  </li>
+  
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/m-kim" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/m-kim" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/m-kim" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> GitLab
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="closest point embedding problems 2">
+    <meta itemprop="description" content="Continued from yesterday, it looks like building the on_surf_cmpt is the problem.Checking if there are empty on_surf_cmpt indexes, there aren’t.">
+    <meta itemprop="datePublished" content="March 01, 2015">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">closest point embedding problems 2
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Continued from yesterday, it looks like building the on_surf_cmpt is the problem.
+Checking if there are empty on_surf_cmpt indexes, there aren’t.</p>
+
+<p>Check on_surf_fulldim and by debugging we can see that the where there is full
+coverage on the surface, the on_surf_fulldim index is correct. However, in
+areas where there is sparse coverage, the index that is on the grid spacing 
+has a proper index, but the next 26 indexes are -1.</p>
+
+<p>Debuggin more, it seems that expanding the g_on_surf_idx from grid space to
+image space is causing the problem. But I have no idea why.</p>
+
+<p>Where are “bad” on_surf_fulldim getting set to -1? The only thing I see is reset(0).</p>
+
+<p>AHA! The “bad” on_surf_fulldim indexes are getting set in countPrts. If we 
+don’t run countPrts:</p>
+
+<p><img src="/assets/20150301/cpm.png" alt="" /></p>
+
+<p>And the spacing gets worse as we move down the X-axis:</p>
+
+<p><img src="/assets/20150301/cpm1.png" alt="" /></p>
+
+<p>X: 554 to 2515</p>
+
+<p>X: 1532, 1533 filled
+X: 1534, 1535, 1536 empty
+X: 1537, 1538 filled
+X: 1539, 1540 empty
+X: 1541, 1542, 1543 filled</p>
+
+<p>Wait, what? When debugging, the grid-&gt;decompIdx when the fill is correct, the stepping goes</p>
+
+<p>X: 306 -&gt; 309 -&gt; 312</p>
+
+<p>etc. This is what I expect it to be.</p>
+
+<p>However, when I skip to a striped area its:</p>
+
+<p>X: 1590 -&gt; 1596 -&gt; 1602 -&gt; 1608</p>
+
+<p>etc., and in grid space</p>
+
+<p>X: 530 -&gt; 532 -&gt; 534 -&gt; 536</p>
+
+<p>So, the grid is wrong?</p>
+
+<p>I have a theory:</p>
+
+<p>Here’s an image from ice-train with the grid=1024, subgrid=1,1,1 and the 
+grid_offset (how many voxels to check around myself to vertices) set to 3.</p>
+
+<p><img src="/assets/20150301/cpm4.png" alt="" /></p>
+
+<p>And here it is with grid_offset set to 2.</p>
+
+<p><img src="/assets/20150301/cpm5.png" alt="" /></p>
+
+<p>As I increase the grid refinement, I may also have to increase how the grid_offset.
+But, the grid_offset vastly increases the amount of memory I need.</p>
+
+<p>Is this what’s happening?  I don’t think so, here’s why. One, its too conveniently in line
+with the X-axis. Two, it’s too conveniently in line with the Z-axis. Three, I’ve set the
+grid to be 1280 and the grid_spacing to 1. The following image shows where it goes from
+solid to stripes. In the solid area, there are gaps since those don’t fall 
+on a vertex. Likewise, there are gaps, but stripes as well, on the striped area.</p>
+
+<p><img src="/assets/20150301/cpm6.png" alt="" /></p>
+
+<p>So, here’s the thing: the base grid for this dataset has to be 1024. Here’s what it looks like
+set to 768 after 104 iterations with velocities normalized and projected onto the surface, with a</p>
+
+<p><img src="/assets/20150301/sosleepy104.png" alt="" /></p>
+
+<p>Ahem, nevermind, it doesn’t work for 1024 either.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#research" class="page__taxonomy-item" rel="tag">research</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-03-01T16:37:00-05:00">March 01, 2015</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=closest+point+embedding+problems+2%20http%3A%2F%2Flocalhost%3A4000%2Fresearch%2Fclosest-point-embedding2%2F" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fresearch%2Fclosest-point-embedding2%2F" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fresearch%2Fclosest-point-embedding2%2F" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fresearch%2Fclosest-point-embedding2%2F" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/research/closest-point-embedding/" class="pagination--pager" title="closest point embedding problems
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/research/edelta/" class="pagination--pager" title="closest point embedding problems 3
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/research/grad-school-travel-assistance/" rel="permalink">Graduate School Travel Assistance
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Presenting our work, “Surface Flow Visualization Using the Closest Point Embedding” at a premier conference such as the IEEE Pacific Visualization Conference...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/psaap-poster/" rel="permalink">PSAAP Poster redux
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">PSAAP Poster
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/research/psaap-poster/" rel="permalink">PSAAP Poster
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">PSAAP Poster
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/research/octree-voxelization/" rel="permalink">Octree and voxelization
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">First, I need to know how deep the octree needs to be. So, I threw the mesh into 
+a GPU octree and it never returned. Okay, so I threw it in a CPU octree, an...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/m-kim"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="https://gitlab.com/m-kim"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="https://bitbucket.org/m-kim"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Mark Kim. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

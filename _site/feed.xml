@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-30T17:47:00-05:00</updated><id>http://localhost:4000/</id><title type="html">Mark Kim</title><subtitle>Postdoctoral Resarcher</subtitle><author><name>Mark Kim</name></author><entry><title type="html">Graduate School Travel Assistance</title><link href="http://localhost:4000/research/grad-school-travel-assistance/" rel="alternate" type="text/html" title="Graduate School Travel Assistance" /><published>2015-04-03T13:00:00-04:00</published><updated>2015-04-03T13:00:00-04:00</updated><id>http://localhost:4000/research/grad-school-travel-assistance</id><content type="html" xml:base="http://localhost:4000/research/grad-school-travel-assistance/">&lt;p&gt;Presenting our work, “Surface Flow Visualization Using the Closest Point Embedding” at a premier conference such as the IEEE Pacific Visualization Conference is important for my growth as a researcher. Discussing it amongst peers and getting feedback is incredibly important for continuing my research as well as developing new insights in the field. Further, making connections with other researchers, especially international researchers, in my area is critical as my career progresses.&lt;/p&gt;
+
+&lt;p&gt;Further, presenting our work at Pacific Visualization continues the mission of the Scientific Computing and Imaging Institute as a world-class leader in scientific visualization. Further, it solidifies the School of Computing as a nurturing environment for potential students around the world to do good research in graphics and visualization.&lt;/p&gt;</content><author><name>Mark Kim</name></author><summary type="html">Presenting our work, “Surface Flow Visualization Using the Closest Point Embedding” at a premier conference such as the IEEE Pacific Visualization Conference is important for my growth as a researcher. Discussing it amongst peers and getting feedback is incredibly important for continuing my research as well as developing new insights in the field. Further, making connections with other researchers, especially international researchers, in my area is critical as my career progresses.</summary></entry><entry><title type="html">PSAAP Poster redux</title><link href="http://localhost:4000/psaap-poster/" rel="alternate" type="text/html" title="PSAAP Poster redux" /><published>2015-03-29T13:00:00-04:00</published><updated>2015-03-29T13:00:00-04:00</updated><id>http://localhost:4000/psaap-poster</id><content type="html" xml:base="http://localhost:4000/psaap-poster/">&lt;p&gt;&lt;a href=&quot;/assets/2015/03/29/psaap.pdf&quot;&gt;PSAAP Poster&lt;/a&gt;&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">PSAAP Poster</summary></entry><entry><title type="html">PSAAP Poster</title><link href="http://localhost:4000/research/psaap-poster/" rel="alternate" type="text/html" title="PSAAP Poster" /><published>2015-03-24T17:00:00-04:00</published><updated>2015-03-24T17:00:00-04:00</updated><id>http://localhost:4000/research/psaap-poster</id><content type="html" xml:base="http://localhost:4000/research/psaap-poster/">&lt;p&gt;&lt;a href=&quot;/assets/2015/03/24/psaap.pdf&quot;&gt;PSAAP Poster&lt;/a&gt;&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">PSAAP Poster</summary></entry><entry><title type="html">Octree and voxelization</title><link href="http://localhost:4000/research/octree-voxelization/" rel="alternate" type="text/html" title="Octree and voxelization" /><published>2015-03-23T17:00:00-04:00</published><updated>2015-03-23T17:00:00-04:00</updated><id>http://localhost:4000/research/octree-voxelization</id><content type="html" xml:base="http://localhost:4000/research/octree-voxelization/">&lt;p&gt;First, I need to know how deep the octree needs to be. So, I threw the mesh into 
+a GPU octree and it never returned. Okay, so I threw it in a CPU octree, and it never returned. 
+Hmmm… turns out there are duplicate faces and vertices. Fixed those, now
+both the GPU and the CPU version of the octree return…a depth of 17. That means
+I’m looking at a resolution of 2^17 or 131072^3. Yikes. After looking at some of
+the octree and voxelization results though, I think we can do something like 2048^3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/octree-level-10.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/2015/03/23/octree-level-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The top image is for an octree at the lowest level, where the level is 10 (2^10 = 1024)&lt;/p&gt;
+
+&lt;p&gt;The bottom image is for an octree at the lowest level, where the level is 11 (2^11 = 2048).&lt;/p&gt;
+
+&lt;p&gt;It’s easy to see that there isn’t a consistent coverage at this level.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/octree-stop-at-leaf-level-10.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/2015/03/23/octree-stop-at-leaf-level-10-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The top image is if we stop where a bounding box is a leaf. The bottom image 
+is zoomed in closer. You can see there are varying levels of the 
+mesh, but the vary levels have little do with the curvature and in one case, the density, of the mesh.&lt;/p&gt;
+
+&lt;p&gt;These random varying octree cells are no good. I rely on the cells to create good
+embeddings. I’d rather have a consistent coverage. So, let’s try voxelization.&lt;/p&gt;
+
+&lt;p&gt;I started with this paper:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://dl.acm.org/citation.cfm?id=2492048&quot;&gt;Out-of-core construction of sparse voxel octrees&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;and this code:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Forceflow/ooc_svo_builder&quot;&gt;Out-of-Core SVO&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I first parallelized it on the CPU then did it in CUDA.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/voxelization-level-10.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/2015/03/23/voxelization-level-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The top image is voxelization with the level=10. However, it’s difficult to
+discern anything, so the bottom image is level=6. The coverage is consistent, 
+and near the level I want.&lt;/p&gt;
+
+&lt;p&gt;The problem is the octree on the GPU is fast and only relies on the vertices.&lt;br /&gt;
+The voxelization needs to check the faces and determine whether the 
+voxel cell intersects it, so is slower. How much slower? Just the algorithm, on the GPU, 
+takes approximately 0.388 seconds when the level is 2048. In total, it takes 0.74 seconds.
+ Why is this so slow on the GPU?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/profiler.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a profile of the voxelization in CUDA on a Acer V15 Nitro Black Edition (i7-4720HQ with an Nvidia GTX-860m with 4GB VRAM). 
+It is dominated by cudaReset and cudaMemcpy, where cudaReset is a kernel simply sets an array to 0 (this is faster than cudaMemset). 64% of the time
+is spent running cudaReset. Previously, cudaMemset took 77% of the time.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/profiler-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Breaking the processing down, the image above is zoomed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/profiler-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, the computation blocks are circled. As you can see, 4 of the five that
+are highlighted are slivers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2015/03/23/profiler-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, the copying and setting the memory to zero is highlighted. The time to copy back data as well as reset arrays dominates the computation.&lt;/p&gt;
+
+&lt;p&gt;The 2048^3 block is broken down into 8 regions and each region is processed separately. 
+This unfortunately leaves the workload unbalanced, which we can see because only one of the eight blocks 
+is visible in the graph (the other 7 are either completely absent or take so little time that they
+are slivers in the graph).&lt;/p&gt;
+
+&lt;p&gt;The unbalanced workload is the achille’s heel of this. But, the only way to get 2048^3 
+is to break up the grid. The copying and resetting kill performance.&lt;/p&gt;
+
+&lt;p&gt;The CUDA version is only a tenth of a second faster than a multi-core, SSE 4.2 
+version I also wrote.&lt;/p&gt;
+
+&lt;p&gt;Moving foward, if I stay with the voxelization at 2048^3, I think it would be better to stick with the CPU version,
+and have the time=t+1 voxelizer run as the CUDA advection at time=t is run.&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">First, I need to know how deep the octree needs to be. So, I threw the mesh into a GPU octree and it never returned. Okay, so I threw it in a CPU octree, and it never returned. Hmmm… turns out there are duplicate faces and vertices. Fixed those, now both the GPU and the CPU version of the octree return…a depth of 17. That means I’m looking at a resolution of 2^17 or 131072^3. Yikes. After looking at some of the octree and voxelization results though, I think we can do something like 2048^3.</summary></entry><entry><title type="html">closest point embedding problems 5</title><link href="http://localhost:4000/research/edelta/" rel="alternate" type="text/html" title="closest point embedding problems 5" /><published>2015-03-04T17:00:00-05:00</published><updated>2015-03-04T17:00:00-05:00</updated><id>http://localhost:4000/research/edelta</id><content type="html" xml:base="http://localhost:4000/research/edelta/">&lt;p&gt;Edit: found these in “Surface Techniques for Vortex Visualization”, Garth et al. 2004.
+&lt;img src=&quot;/assets/20150304/edelta-1.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/20150304/edelta-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That bulb may be too complex.&lt;/p&gt;
+
+&lt;p&gt;Camera position for MeshLab&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE ViewState&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;VCGCamera&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TranslationVector=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-0.865113 -0.188515 -4.36142 1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;LensDistortion=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0 0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ViewportPx=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2495 1498&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;PixelSizeMm=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0369161 0.0369161&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;CenterPx=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1247 749&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;FocalMm=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;633.292&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;RotationMatrix=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;ViewSettings&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;NearPlane=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;998&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TrackScale=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;9.6232&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;FarPlane=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1029.86&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;Render&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Lighting=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;DoubleSideLighting=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;SelectedVert=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ColorMode=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;SelectedFace=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;BackFaceCull=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;FancyLighting=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;DrawMode=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;TextureMode=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Original mesh:
+&lt;img src=&quot;/assets/20150304/snapshot00.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Remove first 5000 points/faces, and highlight the next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-1500001.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-1500002.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-1500003.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-2000004.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-2000005.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-3000006.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-3000007.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-4000008.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-4000009.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-5000010.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-5000011.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-6000012.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-6000013.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-7000014.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-7000015.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-7000016.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-8000017.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-9000018.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-9000019.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-10000020.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-10000021.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-11000022.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-11000023.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-12000024.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-12000025.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-13000026.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-13000027.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-14000028.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-14000029.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Highlight next 10,000 to be removed.
+&lt;img src=&quot;/assets/20150304/snapshot-15000030.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150304/snapshot-15000031.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">Edit: found these in “Surface Techniques for Vortex Visualization”, Garth et al. 2004.</summary></entry><entry><title type="html">closest point embedding problems 4</title><link href="http://localhost:4000/research/edelta/" rel="alternate" type="text/html" title="closest point embedding problems 4" /><published>2015-03-03T17:00:00-05:00</published><updated>2015-03-03T17:00:00-05:00</updated><id>http://localhost:4000/research/edelta</id><content type="html" xml:base="http://localhost:4000/research/edelta/">&lt;p&gt;Yesterday, I came to the conclusion that it was the oniony aspect of the dataset 
+that was creating the artifacts. To test this, I removed the triangles from the center
+of the “bulb” and advected on it.  Here’s what we get.&lt;/p&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;480&quot; src=&quot;/assets/20150303/test.mp4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;480&quot; src=&quot;/assets/20150303/test2.mp4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;To see more of the flow, I rotated the flow and snapped this image:
+&lt;img src=&quot;/assets/20150303/test2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is smeared because there are two parts of the surface close to each other.
+&lt;img src=&quot;/assets/20150303/test2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So it looks like the surface is too close to itself and that’s why 
+I’m getting errors.&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">Yesterday, I came to the conclusion that it was the oniony aspect of the dataset that was creating the artifacts. To test this, I removed the triangles from the center of the “bulb” and advected on it. Here’s what we get.</summary></entry><entry><title type="html">closest point embedding problems 3</title><link href="http://localhost:4000/research/edelta/" rel="alternate" type="text/html" title="closest point embedding problems 3" /><published>2015-03-02T16:37:00-05:00</published><updated>2015-03-02T16:37:00-05:00</updated><id>http://localhost:4000/research/edelta</id><content type="html" xml:base="http://localhost:4000/research/edelta/">&lt;p&gt;Slowly moving forward.
+setDtStep(0.2)
+grid=768
+subgrid=(3,3,3)
+grid_offset = 3
+normalize=true
+proj_onto_surf=false
+uflic_minute = 1
+uflic_ht = 1&lt;/p&gt;
+
+&lt;p&gt;Some stuff sneaks to the other side of the bulb.&lt;/p&gt;
+
+&lt;p&gt;Let’s try grid=512&lt;/p&gt;
+
+&lt;p&gt;Follows the twist, but halts in the same spot.&lt;/p&gt;
+
+&lt;p&gt;Move starting spot to orig_pts[0]-&amp;gt;size()/5
+Still halts.&lt;/p&gt;
+
+&lt;p&gt;Move starting spot to orig_pts[0]-&amp;gt;size()/4
+Still halts.&lt;/p&gt;
+
+&lt;p&gt;Move starting spot to orig_pts[0]-&amp;gt;size()/3.5
+Still halts.&lt;/p&gt;
+
+&lt;p&gt;Change setDtStep to 0.1
+Pushes forward, but still stops.&lt;/p&gt;
+
+&lt;p&gt;Change dye_advection:computeDye so it uses the cur point (instead of the cell_pt)
+as the starting point as the backwards advection.
+Nothing changes.&lt;/p&gt;
+
+&lt;p&gt;Change dye_advection:computeDye so its cell_pt + 0.5
+Whoa, breaking everything.&lt;/p&gt;
+
+&lt;p&gt;FINALLY! It seems that there are patches missing &lt;em&gt;right where things go wonky.&lt;/em&gt;
+Even setting grid to 256 with subgrid to 6,6,6 there are patches missing.
+But, setting the subgrid to (1,1,1), no patches. Interesting.&lt;/p&gt;
+
+&lt;p&gt;WTF.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150302/wtf.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Why?&lt;/p&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;480&quot; src=&quot;/assets/20150302/wtf.mp4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">Slowly moving forward. setDtStep(0.2) grid=768 subgrid=(3,3,3) grid_offset = 3 normalize=true proj_onto_surf=false uflic_minute = 1 uflic_ht = 1</summary></entry><entry><title type="html">closest point embedding problems 2</title><link href="http://localhost:4000/research/closest-point-embedding2/" rel="alternate" type="text/html" title="closest point embedding problems 2" /><published>2015-03-01T16:37:00-05:00</published><updated>2015-03-01T16:37:00-05:00</updated><id>http://localhost:4000/research/closest-point-embedding2</id><content type="html" xml:base="http://localhost:4000/research/closest-point-embedding2/">&lt;p&gt;Continued from yesterday, it looks like building the on_surf_cmpt is the problem.
+Checking if there are empty on_surf_cmpt indexes, there aren’t.&lt;/p&gt;
+
+&lt;p&gt;Check on_surf_fulldim and by debugging we can see that the where there is full
+coverage on the surface, the on_surf_fulldim index is correct. However, in
+areas where there is sparse coverage, the index that is on the grid spacing 
+has a proper index, but the next 26 indexes are -1.&lt;/p&gt;
+
+&lt;p&gt;Debuggin more, it seems that expanding the g_on_surf_idx from grid space to
+image space is causing the problem. But I have no idea why.&lt;/p&gt;
+
+&lt;p&gt;Where are “bad” on_surf_fulldim getting set to -1? The only thing I see is reset(0).&lt;/p&gt;
+
+&lt;p&gt;AHA! The “bad” on_surf_fulldim indexes are getting set in countPrts. If we 
+don’t run countPrts:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150301/cpm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And the spacing gets worse as we move down the X-axis:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150301/cpm1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;X: 554 to 2515&lt;/p&gt;
+
+&lt;p&gt;X: 1532, 1533 filled
+X: 1534, 1535, 1536 empty
+X: 1537, 1538 filled
+X: 1539, 1540 empty
+X: 1541, 1542, 1543 filled&lt;/p&gt;
+
+&lt;p&gt;Wait, what? When debugging, the grid-&amp;gt;decompIdx when the fill is correct, the stepping goes&lt;/p&gt;
+
+&lt;p&gt;X: 306 -&amp;gt; 309 -&amp;gt; 312&lt;/p&gt;
+
+&lt;p&gt;etc. This is what I expect it to be.&lt;/p&gt;
+
+&lt;p&gt;However, when I skip to a striped area its:&lt;/p&gt;
+
+&lt;p&gt;X: 1590 -&amp;gt; 1596 -&amp;gt; 1602 -&amp;gt; 1608&lt;/p&gt;
+
+&lt;p&gt;etc., and in grid space&lt;/p&gt;
+
+&lt;p&gt;X: 530 -&amp;gt; 532 -&amp;gt; 534 -&amp;gt; 536&lt;/p&gt;
+
+&lt;p&gt;So, the grid is wrong?&lt;/p&gt;
+
+&lt;p&gt;I have a theory:&lt;/p&gt;
+
+&lt;p&gt;Here’s an image from ice-train with the grid=1024, subgrid=1,1,1 and the 
+grid_offset (how many voxels to check around myself to vertices) set to 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150301/cpm4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And here it is with grid_offset set to 2.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150301/cpm5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As I increase the grid refinement, I may also have to increase how the grid_offset.
+But, the grid_offset vastly increases the amount of memory I need.&lt;/p&gt;
+
+&lt;p&gt;Is this what’s happening?  I don’t think so, here’s why. One, its too conveniently in line
+with the X-axis. Two, it’s too conveniently in line with the Z-axis. Three, I’ve set the
+grid to be 1280 and the grid_spacing to 1. The following image shows where it goes from
+solid to stripes. In the solid area, there are gaps since those don’t fall 
+on a vertex. Likewise, there are gaps, but stripes as well, on the striped area.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150301/cpm6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, here’s the thing: the base grid for this dataset has to be 1024. Here’s what it looks like
+set to 768 after 104 iterations with velocities normalized and projected onto the surface, with a&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150301/sosleepy104.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ahem, nevermind, it doesn’t work for 1024 either.&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">Continued from yesterday, it looks like building the on_surf_cmpt is the problem. Checking if there are empty on_surf_cmpt indexes, there aren’t.</summary></entry><entry><title type="html">closest point embedding problems</title><link href="http://localhost:4000/research/closest-point-embedding/" rel="alternate" type="text/html" title="closest point embedding problems" /><published>2015-02-28T16:37:00-05:00</published><updated>2015-02-28T16:37:00-05:00</updated><id>http://localhost:4000/research/closest-point-embedding</id><content type="html" xml:base="http://localhost:4000/research/closest-point-embedding/">&lt;p&gt;Having problems with the canvas. With grid = 768 and a subgrid = (3,3,3).
+These should be stripes, but it all kind of collapses around x=1700.&lt;/p&gt;
+
+&lt;p&gt;Changing the subgrid size doesn’t help, its still about 73% of the grid in X.
+Changing the extension size doesn’t change anything either.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And now render seeds.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s what it looks like if we change the grid size to 1024.
+The striping goes wrong around 1500 (out of 3072).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of stripes, just make it white.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And now render the seeds.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Stripes are generated from on_surf_cmpt. That may be where things are going wrong.&lt;/p&gt;
+
+&lt;p&gt;Another view of grid=768, solid fill and seeds.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Zoomed in a little further.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s not a coincidence. It looks like we’re not generating the correct 
+closest points. Those bands are from the grid-space.&lt;/p&gt;
+
+&lt;p&gt;Why is it only in X?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Huh. That cut is right in line with the Z-plane. So, it might not only be in X.
+But there’s no cut line in the Y-plane. Unless we get the strides because
+its greater than all three planes.&lt;/p&gt;
+
+&lt;p&gt;Increasing the g_on_surf_cnt by 1.25 didn’t change anything.&lt;/p&gt;
+
+&lt;p&gt;So, it’s not true that the subgrid size doesn’t matter. Changing it changes
+the spacing after the failure.  Here’s grid=1024, with subgrid =2,3 and 4 respectively.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s what it looks like with grid=1024, but viewing the same place as 768.
+It looks that at the same spot where the stripes start when the grid=768,
+now it goes to black with no stripes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s weird. When the subgrid is (3,3,3) the spacing for the rings is either 4 or 5.&lt;/p&gt;
+
+&lt;p&gt;If I reset on_surf_fulldim, this is what happens. What I was hoping for no stripes, just black.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nevermind, apparently with these settings that happens. Besides, on_surf_fulldim
+doesn’t get resized after on_surf_cmt, pts[0] does.&lt;/p&gt;
+
+&lt;p&gt;Okay, let’s try copying the values of on_surf_cmpt to the orig_prts list and see what happens.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s a better look: what comes out of on_surf_cmpt is wrong.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20150227/cpm16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>Mark Kim</name></author><category term="research" /><summary type="html">Having problems with the canvas. With grid = 768 and a subgrid = (3,3,3). These should be stripes, but it all kind of collapses around x=1700.</summary></entry><entry><title type="html">edelta CPE streamline zoomed</title><link href="http://localhost:4000/research/edelta-uflic-streamline-zoomed/" rel="alternate" type="text/html" title="edelta CPE streamline zoomed" /><published>2015-02-26T12:45:00-05:00</published><updated>2015-02-26T12:45:00-05:00</updated><id>http://localhost:4000/research/edelta-uflic-streamline-zoomed</id><content type="html" xml:base="http://localhost:4000/research/edelta-uflic-streamline-zoomed/">&lt;p&gt;Zoomed in from yesterday. Dt=25.0. Grid is 768, subgrid is 3,3,3. The vectors are projected onto the surface, but the velocity field is not normalized.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/2t59gCdWrbo&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Dt=35.0.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/sp8BIk3f5VY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Dt=40.0.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/onYrAtRAE9Q&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Dt=15.0&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/_tOqfbqmTjI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>Mark Kim</name></author><category term="research" /><category term="closest" /><category term="point" /><category term="edelta" /><category term="stream" /><category term="surface" /><summary type="html">Zoomed in from yesterday. Dt=25.0. Grid is 768, subgrid is 3,3,3. The vectors are projected onto the surface, but the velocity field is not normalized.</summary></entry></feed>

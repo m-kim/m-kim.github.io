@@ -1,0 +1,590 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.7.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Advanced OpenGL - Mark Kim</title>
+
+
+
+
+<meta name="description" content="After reading both papers I realized that the Hadwiger paper was limited by their ability to produce nodes in their deep shadow map by the hardware.  The method required the fragment shader to write to multiple frame buffers to write out nodes and then use a multi-pass approach to generate all the nodes required for the deep shadow map.">
+
+
+
+
+<meta name="author" content="Mark Kim">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Mark Kim">
+<meta property="og:title" content="Advanced OpenGL">
+
+
+  <link rel="canonical" href="http://localhost:4000/classes/advanced-opengl/">
+  <meta property="og:url" content="http://localhost:4000/classes/advanced-opengl/">
+
+
+
+  <meta property="og:description" content="After reading both papers I realized that the Hadwiger paper was limited by their ability to produce nodes in their deep shadow map by the hardware.  The method required the fragment shader to write to multiple frame buffers to write out nodes and then use a multi-pass approach to generate all the nodes required for the deep shadow map.">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2009-05-11T21:39:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Mark Kim",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Mark Kim Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--post">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Mark Kim</a>
+        <ul class="visible-links">
+          
+        </ul>
+        <button type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Mark Kim</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Postdoctoral Researcher
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      <!--
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Somewhere</span>
+        </li>
+      -->
+      <li>
+        <a href="/publications" itemprop="sameAs">
+          Publications
+                </a>
+      </li>
+      <li>
+        <a href="/assets/cv.pdf" itemprop="sameAs">
+          CV
+                </a>
+      </li>
+
+      
+      <li>
+        <a href="https://www.ornl.gov/division/csmd/scientific-data" itemprop="sameAs">
+          Scientific Data Group
+                </a>
+      </li>
+    
+  
+      
+      <li>
+        <a href="https://www.ornl.gov/division/CSM" itemprop="sameAs">
+          Computer Science and Mathematics
+        </a>
+      </li>
+    
+
+
+  
+  <li>
+    <a href="https://www.ornl.gov" itemprop="sameAs">
+      Oak Ridge National Laboratory
+            </a>
+  </li>
+  
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://bitbucket.org/m-kim" itemprop="sameAs">
+            <i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://github.com/m-kim" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+        <li>
+          <a href="https://gitlab.com/m-kim" itemprop="sameAs">
+            <i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> GitLab
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Advanced OpenGL">
+    <meta itemprop="description" content="After reading both papers I realized that the Hadwiger paper was limited by their ability to produce nodes in their deep shadow map by the hardware.  The method required the fragment shader to write to multiple frame buffers to write out nodes and then use a multi-pass approach to generate all the nodes required for the deep shadow map.">
+    <meta itemprop="datePublished" content="May 11, 2009">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Advanced OpenGL
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>After reading both papers I realized that the Hadwiger paper was limited by their ability to produce nodes in their deep shadow map by the hardware.  The method required the fragment shader to write to multiple frame buffers to write out nodes and then use a multi-pass approach to generate all the nodes required for the deep shadow map.</p>
+
+<p>I decided to use CUDA instead, which wouldn’t handicap me to use a multi-pass process.  Instead, I could do a context switch from CUDA to OpenGL and map the linear array I had instantiated in CUDA to a 3D texture in OpenGL.  There were a few hiccups.</p>
+
+<ol>
+  <li>
+    <p>Because of the two separate contexts (CUDA and OpenGL), the 1D array I was created in CUDA actually wasn’t really a pointer to a 3D texture in OpenGL.  In fact, on the context switch, the data was copied.  It is exceptionally fast since its a VRAM to VRAM, but nonetheless, still a copy.  I worked around this by just writing a ray caster in CUDA (which I later found out is also available in the CUDA SDK) and only copying a 512 x 512 image back and forth between CUDA and OpenGL.  However, in DirectX you can create “pointers”, so no memory would need to be copied over.  Also, there’s a texture pointer in OpenGL that’s available, but I was never able to get it to function correctly.  I would prefer that I generate the deep shadow map in CUDA and use Cg or GLSL to do the volume rendering, but as it is right now, CUDA does the volume rendering.</p>
+  </li>
+  <li>
+    <p>My workstation has a 9800 GX2 which is a dual GPU card.  That’s awesome, except CUDA decided to copy all the data down to the “host” and then copy it back to the device when copying the data.  This was atrociously slow, but solved by turning off one of the GPUs.  This is a known bug in CUDA.</p>
+  </li>
+</ol>
+
+<p><img src="/assets/deep_shadow1.png" alt="" /></p>
+
+<p>~20 fps, 512x512 deep shadow map and a 512x512 viewport.</p>
+
+<p><img src="/assets/deep_shadow2.png" alt="" /></p>
+
+<p>~20 fps, 512x512 deep shadow map and a 512x512 viewport.</p>
+
+<p><img src="/assets/deep_shadow3.png" alt="" /></p>
+
+<p>~9 fps, 512x512 deep shadow map and a 512x512 viewport.</p>
+
+<p>As you can see in the third image, there’s some pretty bad sampling artifacts.  Although I am using a a 512x512 box to do my deep shadow map for this image, its unclear to me how many rays are actually used to create the shadow.  After all, there are more rays that miss the shadow volume completely than actually hit the shadow volume, so much of the 512x512 is hitting empty space.</p>
+
+<p>Further, I deviated from the the lookup used in the paper mostly because the way I thought they did it lead to an exceptionally slow (less than 1 fps) shadow volume, so what I do instead is shoot ray back towards the light and figure out where it hits the light camera viewport, and then project that into the viewport so I can figure out which ray that was built is closest.  I think that’s another reason why the third images has such poor artifacts.</p>
+
+<p>Finally, things that still need to get done.  I still don’t have a good compression strategy, which I would hope would decrease the amount of memory is use (currently 512^3 for this sample).  Also, I would like to figure out a better way to do the look up for the deep shadow map.  Also, switch from copying over essentially a frame buffer to using Cg/GLSL instead.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#classes" class="page__taxonomy-item" rel="tag">classes</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2009-05-11T21:39:00-04:00">May 11, 2009</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Advanced+OpenGL%20http%3A%2F%2Flocalhost%3A4000%2Fclasses%2Fadvanced-opengl%2F" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fclasses%2Fadvanced-opengl%2F" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fclasses%2Fadvanced-opengl%2F" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fclasses%2Fadvanced-opengl%2F" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/publications/assembling-large-mosaics/" class="pagination--pager" title="Assembling Large Mosaics of Electron Microscope Images using GPU
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/publications/direction-feature-visualization/" class="pagination--pager" title="Direct Feature Visualization Using Morse-Smale Complexes
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/research/grad-school-travel-assistance/" rel="permalink">Graduate School Travel Assistance
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Presenting our work, “Surface Flow Visualization Using the Closest Point Embedding” at a premier conference such as the IEEE Pacific Visualization Conference...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/psaap-poster/" rel="permalink">PSAAP Poster redux
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">PSAAP Poster
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/research/psaap-poster/" rel="permalink">PSAAP Poster
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">PSAAP Poster
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/research/octree-voxelization/" rel="permalink">Octree and voxelization
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">First, I need to know how deep the octree needs to be. So, I threw the mesh into 
+a GPU octree and it never returned. Okay, so I threw it in a CPU octree, an...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/m-kim"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="https://gitlab.com/m-kim"><i class="fa fa-fw fa-gitlab" aria-hidden="true"></i> Gitlab</a></li>
+    
+    
+      <li><a href="https://bitbucket.org/m-kim"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Mark Kim. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
