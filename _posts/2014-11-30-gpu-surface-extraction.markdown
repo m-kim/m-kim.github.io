@@ -4,31 +4,20 @@ title:  "GPU surface extraction using the closest point embedding"
 date:   2014-11-30
 category: publications
 summary: M. Kim, C.D. Hansen. "GPU surface extraction using the closest point embedding,"  In Proceedings of IS&T/SPIE Visualization and Data Analysis, 2015.
-images:
-    -
-        url: /assets/head_inset.png
-    -
-        url: /assets/Pig1_inset.png
 ---
 
 *M. Kim*, C.D. Hansen. "GPU surface extraction using the closest point embedding,"  In Proceedings of IS&T/SPIE Visualization and Data Analysis, 2015.
 
-#### Mark Kim and Charles Hansen ####
-{% assign image = page.images[0] %}
-{% include image.html image=image %}
-{% assign image = page.images[1] %}
-{% include image.html image=image %}
-{% assign image = page.images[2] %}
-{% include image.html image=image %}
+####Mark Kim and Charles Hansen####
 
-<!--[![]({filename}/assets/head_inset.png)]({filename}/assets/Pig1_lung_1.png)[![]({filename}/assets/Pig1_inset.png)]({filename}/assets/new_head_1_1.png)-->
+[![]({filename}/assets/head_inset.png)]({filename}/assets/Pig1_lung_1.png)[![]({filename}/assets/Pig1_inset.png)]({filename}/assets/new_head_1_1.png)
 
 
 
-### Abstract ###
+###Abstract###
 Isosurface extraction is a fundamental technique used for both surface reconstruction and mesh generation. One method to extract well-formed isosurfaces is a particle system; unfortunately, particle systems can be slow. In this paper, we introduce an enhanced parallel particle system that uses the closest point embedding as the surface representation to speed-up the particle system for isosurface extraction. The closest point embedding is used in the Closest Point Method (CPM), a technique that uses a standard three dimensional numerical PDE solver on two dimensional embedded surfaces. To fully take advantage of the closest point embedding, it is coupled with a Barnes-Hut tree code on the GPU. This new technique produces well-formed, conformal unstructured triangular and tetrahedral meshes from labeled multi-material volume datasets. Further, this new parallel implementation of the particle system is faster than any known methods for conformal multi-material mesh extraction. The resulting speedups gained in this implementation can reduce the time from labeled data to mesh from hours to minutes and benefits users, such as bioengineers, who employ triangular and tetrahedral meshes.
 
-### Introduction ###
+###Introduction###
 Isosurface extraction from three-dimensional scalar volumes is a fundamental technique in visualization. In some cases,
 the scalar data may be composed of different materials and although the material is stored in a regular grid, the materials
 generally do not conform to the underlying grid. Recent work by Meyer et al.&#91;1, 2&#93; uses a particle-based approach to extract
@@ -63,7 +52,7 @@ well. Therefore, a new approach is needed overcome these issues.
 * New seeding and add/delete algorithms to efficiently place new particles.
 * The first use of particles for direct visualization of a closest point embedding of a surface.
 
-### References ###
+###References###
 
 1.    Meyer, M., Kirby, R., and Whitaker, R., Topology, accuracy, and quality of isosurface meshes using dynamic particles, IEEE Transactions on Visualization and Computer Graphics (Visualization 2007) 13(6), 17041711 (2007).
 2.    Meyer, M., Whitaker, R., Kirby, R., Ledergerber, C., and Pfister, H., Particle-based sampling and meshing of surfaces in multimaterial volumes, IEEE Transactions on Visualization and Computer Graphics (Visualization 2008) 14(6), 15391546 (2008).
