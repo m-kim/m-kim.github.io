@@ -8,3 +8,14 @@ markdown: kramdown
 
 plugins:
   - jekyll-sitemap
+author:
+  name             : "Mark Kim"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Postdoctoral Researcher"
+  location         : "Somewhere"
+  group            : "csmd/scientific-data"
+  group_fullname   : "Scientific Data Group"
+  division         : "CSM"
+  division_fullname: "Computer Science and Mathematics"
+  lab              : "https://www.ornl.gov"
+  lab_fullname     : "Oak Ridge National Laboratory"
