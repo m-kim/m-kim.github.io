@@ -85,7 +85,7 @@ analytics:
 author:
   name             : "Mark Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Postdoctoral Researcher"
+  bio              : "Computer Scientist"
   location         : "Somewhere"
   group            : "csmd/scientific-data"
   group_fullname   : "Scientific Data Group"
