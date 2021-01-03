@@ -87,12 +87,9 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Computer Scientist"
   location         : "Somewhere"
-  group            : "csmd/scientific-data"
-  group_fullname   : "Scientific Data Group"
-  division         : "CSM"
-  division_fullname: "Computer Science and Mathematics"
-  lab              : "https://www.ornl.gov"
-  lab_fullname     : "Oak Ridge National Laboratory"
+  group_fullname   : "Graphics Research Team"
+  lab              : "www.qualcomm.com"
+  lab_fullname     : "Qualcomm"
   email            :
   uri              :
   bitbucket        : "m-kim"
