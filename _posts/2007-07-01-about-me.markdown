@@ -4,9 +4,9 @@ title:  "About Me"
 date:   2007-07-01
 category: aboutme
 ---
-Mark is a research software engineer in the Graphics Research Team at [Qualcomm.](https://www.qualcomm.com). His work focuses on computer graphics, particularly ray tracing. 
+Mark is an application engineer on the Ray Tracing++ team at [Intel Corp.](https://www.intel.com). He focuses on software ray tracing on the GPU.
 
-Previously, Mark was a computer scientist in the [Scientific Data Group](https://www.ornl.gov/division/csmd/scientific-data), in the [Computer Science and Mathematics Division](https://www.ornl.gov/division/csmd/) of [Oak Ridge National Laboratory](https://www.ornl.gov). His work at Oak Ridge is focused on in situ analysis and visualization.
+Previously, he was a research software engineer in the Graphics Research Team at [Qualcomm.](https://www.qualcomm.com). His work focuses on computer graphics, particularly ray tracing. Prior to Qualcomm, Mark was a computer scientist in the [Scientific Data Group](https://www.ornl.gov/division/csmd/scientific-data), in the [Computer Science and Mathematics Division](https://www.ornl.gov/division/csmd/) of [Oak Ridge National Laboratory](https://www.ornl.gov). His work at Oak Ridge is focused on in situ analysis and visualization.
 
 Prior to that, Mark was a postdoctoral researcher at Oak Ridge National Laboratory. Previously, he was a postdoctoral researcher in the [Scientific Computing and Imaging (SCI) Institute](http://www.sci.utah.edu) at the [University of Utah](http://www.utah.edu). Mark earned his PhD from the University of Utah, advised by [Chuck Hansen](http://www.cs.utah.edu/~hansen) with a focus on scientific visualization of surfaces, particularly surface flow visualization.
 
